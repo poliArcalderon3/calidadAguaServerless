@@ -1,0 +1,13 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "muestras",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "Potability", "order": "ASCENDING" },
+        { "fieldPath": "__name__", "order": "ASCENDING" }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}

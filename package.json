@@ -1,0 +1,16 @@
+{
+  "name": "calidad-agua-serverless",
+  "private": true,
+  "description": "Vercel Functions (serverless) que consultan Cloud Firestore",
+  "type": "module",
+  "engines": {
+    "node": "22.x"
+  },
+  "dependencies": {
+    "firebase-admin": "^14.5.0"
+  },
+  "devDependencies": {
+    "@vercel/node": "^30.0.0",
+    "typescript": "^7.0.2"
+  }
+}

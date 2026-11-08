@@ -1,0 +1,17 @@
+{
+  "name": "carga-firestore",
+  "private": true,
+  "description": "Script que carga el dataset water_potability.csv en Cloud Firestore",
+  "type": "module",
+  "scripts": {
+    "cargar": "tsx cargar-datos.ts"
+  },
+  "dependencies": {
+    "csv-parse": "^7.0.3",
+    "firebase-admin": "^14.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "tsx": "^4.23.15"
+  }
+}

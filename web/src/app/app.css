@@ -1,0 +1,37 @@
+:host {
+  display: block;
+  font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+  color: #1f2933;
+}
+
+main { max-width: 1000px; margin: 0 auto; padding: 24px 16px; }
+h1 { margin: 0 0 4px; color: #0b5cad; }
+h2 { font-size: 1.1rem; margin: 0 0 12px; }
+section { margin-top: 28px; }
+.subtitulo, .pie { color: #5b6878; margin: 0; }
+.pie { margin-top: 32px; font-size: 0.85rem; text-align: center; }
+
+form { display: flex; gap: 8px; flex-wrap: wrap; }
+select, input, button { font: inherit; padding: 8px 10px; border: 1px solid #c9d3de; border-radius: 6px; }
+input { flex: 1; min-width: 180px; }
+button { background: #0b5cad; color: #fff; border-color: #0b5cad; cursor: pointer; }
+button:disabled { opacity: 0.5; cursor: default; }
+.mensaje { color: #8a5a00; }
+
+.tarjeta { margin-top: 16px; border: 1px solid #c9d3de; border-radius: 8px; padding: 16px; }
+.tarjeta h3 { margin: 0 0 12px; display: flex; gap: 12px; align-items: center; }
+.tarjeta h3 span { font-size: 0.85rem; padding: 2px 10px; border-radius: 999px; color: #fff; }
+.si { background: #0f9d77; }
+.no { background: #d9534f; }
+dl { display: grid; grid-template-columns: max-content auto; gap: 6px 16px; margin: 0; }
+dt { color: #5b6878; }
+dd { margin: 0; font-weight: 600; }
+
+.tabla { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th, td { padding: 6px 8px; border-bottom: 1px solid #e3e8ee; text-align: right; white-space: nowrap; }
+th:first-child, td:first-child { text-align: left; }
+th { background: #f4f7fa; }
+tbody tr { cursor: pointer; }
+tbody tr:hover { background: #eef5fd; }
+.paginas { display: flex; gap: 12px; align-items: center; justify-content: center; margin-top: 12px; }

@@ -1,0 +1,76 @@
+<main>
+  <h1>Calidad del agua</h1>
+  <p class="subtitulo">3.276 muestras de agua del dataset Water Quality (Kaggle)</p>
+
+  <!-- Buscador -->
+  <section>
+    <h2>Buscar muestra</h2>
+    <form (submit)="buscar($event)">
+      <select [value]="modo()" (change)="cambiarModo($any($event.target).value)" aria-label="Buscar por">
+        <option value="id">Por ID</option>
+        <option value="solidos">Por sólidos disueltos</option>
+      </select>
+      <input
+        [value]="texto()"
+        (input)="texto.set($any($event.target).value)"
+        [placeholder]="modo() === 'id' ? 'Ej.: M-0004' : 'Ej.: 22018.42'"
+        aria-label="Valor a buscar" />
+      <button type="submit">Buscar</button>
+    </form>
+
+    @if (mensaje()) {
+      <p class="mensaje">{{ mensaje() }}</p>
+    }
+
+    @if (resultado(); as m) {
+      <div class="tarjeta">
+        <h3>
+          {{ m.id_muestra }}
+          <span [class]="m.Potability === 1 ? 'si' : 'no'">{{ m.Potability === 1 ? 'Potable' : 'No potable' }}</span>
+        </h3>
+        <dl>
+          @for (p of parametros; track p.clave) {
+            <dt>{{ p.nombre }} ({{ p.unidad }})</dt>
+            <dd>
+              @if (valor(m, p.clave) !== null) { {{ valor(m, p.clave) | number: '1.0-2' }} } @else { sin dato }
+            </dd>
+          }
+        </dl>
+      </div>
+    }
+  </section>
+
+  <!-- Tabla -->
+  <section>
+    <h2>Muestras</h2>
+    <div class="tabla">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            @for (p of parametros; track p.clave) { <th>{{ p.nombre }}</th> }
+            <th>Potable</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (m of filas(); track m.id_muestra) {
+            <tr (click)="mostrar(m)">
+              <td>{{ m.id_muestra }}</td>
+              @for (p of parametros; track p.clave) {
+                <td>@if (valor(m, p.clave) !== null) { {{ valor(m, p.clave) | number: '1.0-2' }} } @else { — }</td>
+              }
+              <td>{{ m.Potability === 1 ? 'Sí' : 'No' }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+    <div class="paginas">
+      <button (click)="paginaAnterior()" [disabled]="!anteriores().length">Anterior</button>
+      <span>Página {{ anteriores().length + 1 }}</span>
+      <button (click)="paginaSiguiente()" [disabled]="!siguiente()">Siguiente</button>
+    </div>
+  </section>
+
+  <p class="pie">Datos: Kaggle – Water Quality · Angular + Vercel Functions + Google Cloud Firestore</p>
+</main>
